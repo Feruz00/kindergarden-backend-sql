@@ -3,6 +3,8 @@ const catchAsync = require("../utils/catchAsync")
 
 const createAbout = catchAsync(
     async (req, res, next)=>{
+        // console.log("geldim icinde:", req.body)
+        // console.log("files", req.files)
         const {mainImg} = req.files
         const picturePath = mainImg[0].path
         const smallImg = req.files.smallImg ?  req.files.smallImg[0].path : undefined
@@ -19,13 +21,17 @@ const createAbout = catchAsync(
 
 const updateAboutImages = catchAsync(
     async (req, res, next)=>{
+        // console.log("geldim")
+        // console.log(req.params.id)
+        // console.log(req.files)
         const mainImg = req.files.mainImg ?  req.files.mainImg[0].path : undefined
         const smallImg = req.files.smallImg ?  req.files.smallImg[0].path : undefined
         const data = await About.update({
             mainImg,
             smallImg
         },{
-            where:req.params.id
+            where:{
+                _id: req.params.id}
         })
         res.send(data)
 

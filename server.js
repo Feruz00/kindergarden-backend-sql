@@ -93,6 +93,9 @@ app.use('/api/gallery', require('./routes/GalleryRoute'))
 app.use('/api/auth', require('./routes/AuthRoute'))
 app.use('/api/users', require('./routes/UserRoute'))
 app.use('/api/about', require('./routes/AboutRoute'))
+app.use('/api/dashboard', require('./routes/DashboardRoute'))
+app.use('/api/terbiye', require('./routes/TerbiyeRoute'))
+app.use('/api/footer', require('./routes/FooterRoute'))
 
 app.all("*", (req,res, next)=>{
     next(new AppError('Bu sahypa kesgitlenmedik', 404))

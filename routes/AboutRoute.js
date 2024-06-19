@@ -1,4 +1,4 @@
-const { createAbout, updateAboutImages } = require('../controllers/AboutController');
+const {  updateAboutImages, createAbout } = require('../controllers/AboutController');
 const { protect } = require('../controllers/AuthController');
 const { getAll, updateOne, deleteOne } = require('../controllers/handleFactory');
 const { restrictTo } = require('../middleware/restrictTo');
@@ -15,6 +15,8 @@ router.route('/')
     ]), createAbout )
 
 router.use(protect );
+
+
 router.route('/:id')
     .put(updateOne(About))
     .patch(upload.fields([

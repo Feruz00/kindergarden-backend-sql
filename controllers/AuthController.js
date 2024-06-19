@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs')
 
 const register = catchAsync(async (req, res, next) => {
     const { password, ...other } = req.body;
+    // if(req.body.secret !== process.env.mySecret) res.status(403).json(({message: 'Failed'}))
     const pass = User.hashPassword(password);
     const user = await User.create({
         ...other,

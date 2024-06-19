@@ -9,8 +9,8 @@ const upload = require('../middleware/uploadOption');
 const checkStatus = require('../middleware/userOptions');
 
 const limiter = rateLimit({
-    max: 5,
-    windowMs: 60 * 60 * 1000,
+    max: 50,
+    windowMs: 10 * 60 * 1000,
     message: 'Too many requests from this IP, please try again in an hour!'
 });
 
